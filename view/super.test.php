@@ -37,7 +37,7 @@
         <div class="container2">
             <h5 style="padding-left: 32%;">No momento estamos com pouco estoque</h5>
             <div class="row">
-                <form class="col s12" action="./super.resposta.php" method="POST">
+                <form class="col s12" action="./super.resposta.php" method="get">
                     <div class="row 10">
                         <div class="input-field col s12">
                             <p>Digite seu nome: </p>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="input-field col s12">
                             <p>Digite seu telefone: </p>
-                            <input placeholder="RG:" name="txtfone" type="number" class="validate">
+                            <input placeholder="telefone:" name="txtfone" type="number" class="validate">
 
                         </div>
                         <div class="input-field col s12">
@@ -56,7 +56,7 @@
                         </div>
                         <div class="input-field col s12">
                             <p>Digite seu endereço de entrega: </p>
-                            <input placeholder="email:" name="txtendereco" type="email" class="validate">
+                            <input placeholder="endereco:" name="txtendereco" type="text" class="validate">
 
                         </div>
 
@@ -67,21 +67,21 @@
                         </div>
                         <select class="browser-default" name="txtcategoria">
                             <option value="ceu" disabled selected>categoria </option>
-                            <option value="vinho" >Vinho </option>
+                            <option value="vinho">Vinho </option>
                             <option value="whisky">Whisky </option>
-                            
+
                         </select>
                         <label>Selecione sua bebida</label>
                         <select class="browser-default" name="txtbebida">
                             <option value="ceu" disabled selected>Rotulo </option>
-                            <option value="Macallan" >Macallan 18 anos R$5.800,00 </option>
+                            <option value="Macallan">Macallan 18 anos R$5.800,00 </option>
                             <option value="Buchanan">Buchanan's 18 anos R$ 979,99 </option>
                             <option value="Dalmore">Dalmore 18 Anos R$ R$ 1.773,90 </option>
                             <option value="Chateau">Vinho Château Pavie Premier R$ 6.900,00 </option>
                             <option value="caro">Vinho Caro Cosecha R$ 780,00 </option>
-                            
+
                         </select>
-                        
+
                         <div class="input-field col s12">
                             <p>Digite a quantidade:</p>
                             <input placeholder="Quantidade:" name="txtquant" type="number" class="validate">
@@ -90,10 +90,11 @@
                         <label>Forma de pagamento</label>
                         <select class="browser-default" name="txtpagamento">
                             <option value="ceu" disabled selected>Pagamento </option>
-                            <option value="credito" >Cartao de credito </option>
+                            <option value="credito">Cartao de credito </option>
                             <option value="pix">pix </option>
                             <option value="Boleto">Boleto bancario </option>
-                        </select><div class="input-field col s12">
+                        </select>
+                        <div class="input-field col s12">
                             <p>Possui algum cupom de desconto:</p>
                             <input placeholder="Cupom:" name="txtcupom" type="number" class="validate">
 
@@ -101,13 +102,13 @@
                         <div class="input-field col s12">
                             <p>Frete Grátis em pedidos acima de R$1000,00:</p>
                             <p>Informe seu cep:</p>
-                            
-                            <input placeholder="CEP:" name="txtfrete" type="number" class="validate">
+
+                            <input placeholder="CEP:" name="txtcep" type="number" class="validate">
 
                         </div>
 
-                        
-                        
+
+
 
                         <div class="input-field col s12">
                             <button class="btn waves-effect waves-light" type="submit" name="action">Enviar

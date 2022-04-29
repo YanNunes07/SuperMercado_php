@@ -42,19 +42,23 @@
               include "../model/super.class.php";
 
               $sup = new Mercado;
-             
-              echo "<p>Nome:".$_GET["txtnome"]."</p>";
-              echo "<p>Telefone:".$_GET["txtnome"]."</p>";
-              echo "<p>Idade:" .$_GET["txtidade"]."</p>";
-              echo "<p>Email:" .$_GET["txtemail"]."</p>";
-              echo "<p>Endereço de entrega:" .$_GET["txtendereco"]."</p>";
-              echo "<p> Quantidade:" .$_GET["txtquant"]."</p>";
-              echo "<p>Forma de pagamento:" .$_GET["txtpagamento"]."</p>";
-              echo "<p>Cupom para proxima compra:" .$_GET["txtcupom"]."</p>";
-              echo "<p>Valor total R$:" ."</p>";
-          
+
+              $sup->setNomeCliente($_GET["txtnome"]);
+              $sup->setTelefoneCliente($_GET["txtfone"]);
+              $sup->setIdade($_GET["txtidade"]);
+              $sup->setEmail($_GET["txtemail"]);
+              $sup->setEnderecoEntrega($_GET["txtendereco"]);
+              $sup->tipoProduto($_GET["txtcategoria"]);
+              $sup->getProduto($_GET["txtbebida"]);
+              $sup->setQuantidade($_GET["txtquant"]);
+              $sup->formaPagamento($_GET["txtpagamento"]);
+              $sup->frete($_GET["txtcep"]);
+              $sup->cupomDesconto($_GET["txtcupom"]);
+              $sup->ValorTotal();
+              $sup->__toString();
+
+            echo $sup->__toString();
               
-          
               
               ?>
         </div>
