@@ -146,41 +146,33 @@ class Mercado
 
     function tipoProduto()
     {
-        if ($this->categoria == "vinho") {
-            return "Vinho";
-        } elseif ($this->categoria == "whisky") {
-            return "Whisky";
-        } else {
-            return "tipo invalido";
+        switch ($this->categoria) {
+            case $this->categoria == 'vinho':
+                return "Vinho";
+                break;
+            case $this->categoria == 'whisky':
+                return "Whisky";
+                break;
+            default:
+                return "categoria invalida";
         }
     }
-
-    function frete()
-    {
-        if ($this->ValorTotal() <= 1000) {
-            return "frete de R$ 20,00" + 20;
-        } else if ($this->ValorTotal() > 1000) {
-            return 0;
-        }
-    }
-
     function getProduto()
     {
-
         switch ($this->nomeProduto) {
-            case "Macallan":
-                return "Macallan 18 anos R$5.800,00 ";
+            case $this->nomeProduto = "Macallan":
+                return "Macallan 18 anos R$5.800,00";
                 break;
-            case "Buchanan":
+            case $this->nomeProduto = "Buchanan":
                 return "Buchanan's 18 anos R$ 979,99";
                 break;
-            case "Dalmore":
+            case $this->nomeProduto = "Dalmore":
                 return "Dalmore 18 Anos R$ R$ 1.773,90";
                 break;
-            case "Chateau":
+            case $this->nomeProduto = "Chateau":
                 return "Vinho Château Pavie Premier R$ 6.900,00";
                 break;
-            case "caro":
+            case $this->nomeProduto = "caro":
                 return "Vinho Caro Cosecha R$ 780,00";
                 break;
             default:
@@ -193,13 +185,13 @@ class Mercado
     {
 
         switch ($this->pagamento) {
-            case "credito":
+            case $this->pagamento == "Cartao de credito":
                 return "Cartao de credito";
                 break;
-            case "pix":
+            case $this->pagamento == "pix":
                 return "pix";
                 break;
-            case "Boleto":
+            case $this->pagamento == "Boleto bancario":
                 return "Boleto bancario";
                 break;
 
@@ -217,7 +209,7 @@ class Mercado
         shuffle($numeros);
         shuffle($letras);
 
-        echo  "Código Gerado: " . $letras[0] . "" . $numeros[0] . $letras[1] . "" . $numeros[1] . $letras[2] . "" . $numeros[2];
+        echo  "Cupom de desconto gerado: <strong>" . $letras[0] . "" . $numeros[0] . $letras[1] . "" . $numeros[1] . $letras[2] . "" . $numeros[2]."</strong>";
     }
 
     function valorCupom()
@@ -230,44 +222,57 @@ class Mercado
     {
 
         switch ($this->nomeProduto) {
-            case "Macallan":
-                return "Macallan 18 anos R$:" . (5.800 * $this->quantidade) + ($this->frete());
+            case $this->nomeProduto = "Macallan":
+                return 5.800 * $this->quantidade;
                 break;
-            case "Buchanan":
-                return "Buchanan's 18 anos R$:"(979.99 * $this->quantidade) + ($this->frete());
+            case $this->nomeProduto = "Buchanan":
+                return 979.99 * $this->quantidade;
                 break;
-            case "Dalmore":
-                return "Dalmore 18 Anos R$ R$: 1.773,90"(1.773, 90 * $this->quantidade) + ($this->frete());
+            case $this->nomeProduto = "Dalmore":
+                return 1.773 * $this->quantidade;
                 break;
-            case "Chateau":
-                return "Vinho Château Pavie Premier R$: 6.900,00"(6.900 * $this->quantidade) + ($this->frete());
+            case $this->nomeProduto = "Chateau":
+                return 6.900 * $this->quantidade;
                 break;
-            case "caro":
-                return "Vinho Caro Cosecha R$: 780,00"(780.00 * $this->quantidade) + ($this->frete());
+            case $this->nomeProduto = "caro":
+                return 780.00 * $this->quantidade;
                 break;
             default:
                 return "plano invalido";
                 break;
         }
     }
+    function frete()
+    {
+        if ($this->ValorTotal() <= 1000) {
+            return +20;
+        } else if ($this->ValorTotal() > 1000) {
+            return 0;
+        }
+    }
+    function ValorTotalFrete() {
+        return $this->ValorTotal() + $this->frete();
+    }
+    
 
     function __toString()
     {
-        nl2br(
-            "Data e hora da emissao da nota: {$this->mostrarHora()}
-                     Nome:  $this->nomeCliente
-                     Telefone: $this->telefoneCliente
-                     Idade: $this->idade
-                     Email: $this->email
-                     Endereço de entrega: $this->enderecoEntrega
+        return nl2br(
+            "
+                    Data e hora da emissao da nota: {$this->mostrarHora()}
+                     Nome:  {$this->nomeCliente}
+                     Telefone: {$this->telefoneCliente}
+                     Idade: {$this->idade}
+                     Email: {$this->email}
+                     Endereço de entrega: {$this->enderecoEntrega}
                      Categoria: {$this->tipoProduto()}
                      Produto: {$this->getProduto()}
-                     Quantidade: $this->quantidade
+                     Quantidade: {$this->quantidade}
                      Forma de pagamento: {$this->formaPagamento()}
-                     Frete: {$this->frete()}
-                     Valor total: {$this->valorTotal()}
-                     Você ganhou um cupom de 10% para proxima compra {$this->cupomDesconto()}
-                     "
+                     Frete: {$this->frete()}R$
+                     Valor total: R$ {$this->valorTotalFrete()}
+                     Você ganhou um cupom de 10% para proxima compra
+                     <br>"
         );
     }
 }
